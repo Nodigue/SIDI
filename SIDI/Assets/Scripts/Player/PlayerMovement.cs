@@ -8,18 +8,34 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalInput = 0f;
 
     private bool jump = false;
+    private bool run = false;
+    private bool crouch = false;
 
     private void Update()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal") * 10f;
+        this.horizontalInput = Input.GetAxisRaw("Horizontal") * 10f;
 
         if (Input.GetButtonDown("Jump"))
-            jump = true;
+            this.jump = true;
+
+        if (Input.GetKey("left shift"))
+            this.run = true;
+
+        if (Input.GetKey("left alt"))
+            this.crouch = true;
+
     }
 
     private void FixedUpdate()
     {
-        controller.Move(horizontalInput * Time.fixedDeltaTime, jump);
-        jump = false;
+        controller.Move(horizontalInput * Time.fixedDeltaTime, this.jump, this.run, this.crouch);
+        reset_action();
+    }
+
+    private void reset_action()
+    {
+        this.jump = false;
+        this.run = false;
+        this.crouch = false;
     }
 }

@@ -10,25 +10,19 @@ public class PlayerController : MonoBehaviour
 
     [Header("Control")]
     
-    [SerializeField] private float speed = 1f;               //Vitesse (marche)
+    [SerializeField] private float walkingSpeed = 1f;        //Vitesse (marche)
     [SerializeField] private float runningSpeed = 2f;        //Vitesse (course)
     [SerializeField] private float crouchingSpeed = 0.5f;    //Vitesse (accroupi)
 
     [SerializeField] private float jumpForce = 400f;         //Puissance du saut
 
-    [SerializeField] private bool airControl = false;        //Si le personnage peut être contrôler dans les airs
-
     [Header("Ground")]
     
-    [SerializeField] private LayerMask groundMask;           //Masque du Sol
-    [SerializeField] private Transform groundCheck;          //Point de vérification du sol
-    [SerializeField] private bool isGrounded;                //Si le personnage au sol
+    [SerializeField] private Transform ground;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private bool isGrounded = false;
 
-    [Header("Collision")]
-    
-    [SerializeField] private float radius = 0.2f;            //Rayon du cercle de collision
-
-    private Rigidbody2D rigidBody;                           //RigidBody2D du personnage
+    private Rigidbody2D rigidBody;
 
     private void Awake()
     {
@@ -37,43 +31,51 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //On regarde tous les colliders présent dans le cercle de collision sur le Layer du Sol
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, radius, groundMask);
-
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            //Si il y en a au moins un qui n'est pas le personnage, c'est qu'il est au sol
-            if (colliders[i].gameObject != this.gameObject)
-            {
-                isGrounded = true;
-            }
-        }
+        this.isGrounded = checkGround();
     }
 
-    public void Move(float movement, bool jump)
+    private bool checkGround()
     {
-        if (isGrounded || airControl)
+        bool isGrounded = false;
+
+        BoxCollider2D groundCheckCollider = this.groundCheck.GetComponent<BoxCollider2D>();
+
+        if (groundCheckCollider.IsTouching(ground.GetComponent<BoxCollider2D>()))
+            isGrounded = true;
+
+        return isGrounded;
+    }
+
+    public void Move(float movement, bool jump, bool run, bool crouch)
+    {
+        float speed = this.walkingSpeed;
+
+        if (this.isGrounded)
         {
+            if (run)
+                speed = this.runningSpeed;
+            else if (crouch)
+                speed = this.crouchingSpeed;
+
             Vector2 velocity = new Vector2(movement * speed, rigidBody.velocity.y);
             rigidBody.velocity = velocity;
 
+            if (jump)
+            {
+                rigidBody.AddForce(new Vector2(0f, jumpForce));
+            }
+
             if (movement > 0 && !isFacingRight)
             {
-               Flip();
+                Flip();
             }
             else if (movement < 0 && isFacingRight)
             {
-               Flip();
+                Flip();
             }
-        }
 
-        if (isGrounded && jump)
-        {
-            isGrounded = false;
-            rigidBody.AddForce(new Vector2(0f, jumpForce));
         }
     }
-
 
     private void Flip()
     {
