@@ -1535,6 +1535,7 @@ GameObject:
   - component: {fileID: 787680180}
   - component: {fileID: 787680179}
   - component: {fileID: 787680178}
+  - component: {fileID: 787680182}
   - component: {fileID: 787680181}
   m_Layer: 0
   m_Name: Main Camera
@@ -1561,7 +1562,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -1577,7 +1578,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.5142956
+  orthographic size: 8.288061
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1601,7 +1602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787680177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.57, z: -10}
+  m_LocalPosition: {x: 0, y: 1.8, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1619,7 +1620,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb286388f24af4943a47752bb83a9ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keys: {fileID: 787680182}
   player: {fileID: 1666550538}
+  movement: 0.1
+  limit: 5
+--- !u!114 &787680182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787680177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e7488be51da6d4080cfd6695d1eee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1170556308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,7 +1814,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666550538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.09, y: 0.89, z: 0}
+  m_LocalPosition: {x: -0.09, y: 0.45, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 1170556309}
@@ -1817,6 +1833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80509a2477f487d42b9fa07e1e685fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keys: {fileID: 787680182}
   controller: {fileID: 1666550544}
 --- !u!61 &1666550542
 BoxCollider2D:

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header ("Touches : ")]
+    [SerializeField] private Keys keys;
+
     public PlayerController controller;
     private float horizontalInput = 0f;
 
@@ -28,8 +31,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        controller.Move(horizontalInput * Time.fixedDeltaTime, this.jump, this.run, this.crouch);
-        reset_action();
+        if (!Input.GetKey(this.keys.Get_MOVE_CAMERA()))
+        {
+            controller.Move(horizontalInput * Time.fixedDeltaTime, this.jump, this.run, this.crouch);
+            reset_action();
+        }
     }
 
     private void reset_action()
