@@ -2,16 +2,16 @@ fileFormatVersion: 2
 guid: fbf39289743ff014495845afb4dcce95
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Template_Character_0
-    21300002: Template_Character_1
-    21300004: Template_Character_2
-    21300006: Template_Character_3
-    21300008: Template_Character_4
-    21300010: Template_Character_5
-    21300012: Template_Character_6
-    21300014: Template_Character_7
-    21300016: Template_Character_8
-    21300018: Template_Character_9
+    21300000: head
+    21300002: arm_right_2
+    21300004: arm_right_1
+    21300006: body
+    21300008: arm_left_1
+    21300010: arm_left_2
+    21300012: leg_right_1
+    21300014: leg_left_1
+    21300016: leg_right_2
+    21300018: leg_left_2
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -94,15 +94,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Template_Character_0
+      name: head
       rect:
         serializedVersion: 2
         x: 434
         y: 637
         width: 140
         height: 140
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -114,15 +114,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Template_Character_1
+      name: arm_right_2
       rect:
         serializedVersion: 2
         x: 228
         y: 568
         width: 100
         height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.85, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,15 +134,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Template_Character_2
+      name: arm_right_1
       rect:
         serializedVersion: 2
         x: 331
         y: 568
         width: 100
         height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.85, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -154,7 +154,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Template_Character_3
+      name: body
       rect:
         serializedVersion: 2
         x: 434
@@ -162,7 +162,7 @@ TextureImporter:
         width: 140
         height: 216
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -174,15 +174,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Template_Character_4
+      name: arm_left_1
       rect:
         serializedVersion: 2
         x: 577
         y: 568
         width: 100
         height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.15, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,15 +194,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Template_Character_5
+      name: arm_left_2
       rect:
         serializedVersion: 2
         x: 680
         y: 568
         width: 100
         height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.15, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -214,15 +214,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Template_Character_6
+      name: leg_right_1
       rect:
         serializedVersion: 2
         x: 434
         y: 318
         width: 60
         height: 97
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.85}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -234,15 +234,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Template_Character_7
+      name: leg_left_1
       rect:
         serializedVersion: 2
         x: 514
         y: 318
         width: 60
         height: 97
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.85}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,15 +254,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Template_Character_8
+      name: leg_right_2
       rect:
         serializedVersion: 2
         x: 434
         y: 218
         width: 60
         height: 97
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.85}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -274,15 +274,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Template_Character_9
+      name: leg_left_2
       rect:
         serializedVersion: 2
         x: 514
         y: 218
         width: 60
         height: 97
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.85}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
