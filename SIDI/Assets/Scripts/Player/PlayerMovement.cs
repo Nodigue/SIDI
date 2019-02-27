@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         this.horizontalInput = Input.GetAxisRaw("Horizontal") * 10f;
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown("space"))
             this.jump = true;
 
         if (Input.GetKey("left shift"))

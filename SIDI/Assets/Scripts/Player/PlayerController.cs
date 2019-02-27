@@ -4,37 +4,38 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private BodyPartsController bodyPartsController;
+
     [Header("Orientation")]
     
-    [SerializeField] private bool isFacingRight = true;      //Si le personnage est tourné vers la droite
+    [SerializeField] private bool isFacingRight = true;
 
     [Header("Control")]
     
-    [SerializeField] private float walkingSpeed = 1f;        //Vitesse (marche)
-    [SerializeField] private float runningSpeed = 2f;        //Vitesse (course)
-    [SerializeField] private float crouchingSpeed = 0.5f;    //Vitesse (accroupi)
+    [SerializeField] private float walkingSpeed = 1f;
+    [SerializeField] private float runningSpeed = 2f;
+    [SerializeField] private float crouchingSpeed = 0.5f;
 
-    [SerializeField] private float jumpForce = 400f;         //Puissance du saut
-
-    [Header("Ground")]
+    [SerializeField] private float jumpForce = 400f;
+    //[Header("Ground")]
     
-    [SerializeField] private Transform ground;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private bool isGrounded = false;
+    //[SerializeField] private Transform ground;
+    //[SerializeField] private Transform groundCheck;
+    private bool isGrounded = true;
 
     private Rigidbody2D rigidBody;
 
-    private void Awake()
+    private void Awake()    
     {
-        rigidBody = GetComponent<Rigidbody2D>();
+        rigidBody = bodyPartsController.body.GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
-        this.isGrounded = checkGround();
+        //this.isGrounded = checkGround();
     }
 
-    private bool checkGround()
+    /*private bool checkGround()
     {
         bool isGrounded = false;
 
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
 
         return isGrounded;
-    }
+    }*/
 
     public void Move(float movement, bool jump, bool run, bool crouch)
     {
@@ -80,9 +81,5 @@ public class PlayerController : MonoBehaviour
     private void Flip()
     {
         isFacingRight = !isFacingRight;
-
-        Vector2 flip = transform.localScale;
-        flip.x *= -1;
-        transform.localScale = flip;
     }
 }

@@ -11,6 +11,8 @@ public class Keys : MonoBehaviour
 
     private readonly string MOVE_CAMERA = "p";
 
+    private readonly string TEST = "o";
+
     public string Get_UP()
     {
         return this.UP;
@@ -33,13 +35,8 @@ public class Keys : MonoBehaviour
         return this.MOVE_CAMERA;
     }
 
-    void Start()
+    public string Get_TEST()
     {
-        
-    }
-
-    void Update()
-    {
-        
+        return this.TEST;
     }
 }
