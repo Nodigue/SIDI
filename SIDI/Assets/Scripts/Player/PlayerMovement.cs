@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     [Header ("Touches : ")]
     [SerializeField] private Keys keys;
 
+    [SerializeField] private BodyPartsController bodyPartsController;
+
     public PlayerController controller;
     private float horizontalInput = 0f;
 
@@ -35,6 +37,10 @@ public class PlayerMovement : MonoBehaviour
         {
             controller.Move(horizontalInput * Time.fixedDeltaTime, this.jump, this.run, this.crouch);
             reset_action();
+        }
+
+        if (Input.GetKeyDown(this.keys.Get_TEST()))
+        {
         }
     }
 

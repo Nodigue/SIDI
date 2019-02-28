@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()    
     {
-        rigidBody = bodyPartsController.body.GetComponent<Rigidbody2D>();
+        //rigidBody = bodyPartsController.body.GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
