@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class BodyPartsController : MonoBehaviour
 {
-    public GameObject[] body_parts = new GameObject[10];
+    public GameObject[] bodyParts = new GameObject[10];
 
     public GameObject GetBodyPart(string name)
     {
-        GameObject body_part = null;
+        GameObject bodyPart = null;
 
-        foreach (GameObject bp in this.body_parts)
+        foreach (GameObject bp in this.bodyParts)
         {
-           if (bp.name == name)
-                body_part = bp;
+            if (bp.name == name)
+                bodyPart = bp;
         }
-        
-        return body_part;
+
+        return bodyPart;
     }
 } 

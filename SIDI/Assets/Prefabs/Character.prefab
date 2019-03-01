@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5534169265048629801}
   - component: {fileID: 5534169265048629782}
   - component: {fileID: 5534169265048629780}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300002, guid: 56d51ebba2c5ddb46818120ad3230c4d, type: 3}
+  m_Sprite: {fileID: 21300006, guid: fbf39289743ff014495845afb4dcce95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,7 +102,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.4, y: 2.17}
+    oldSize: {x: 1.4, y: 2.16}
     newSize: {x: 1.4, y: 2.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -121,7 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5534169265167627780}
   - component: {fileID: 5534169265167627781}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: leg_left_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300014, guid: 56d51ebba2c5ddb46818120ad3230c4d, type: 3}
+  m_Sprite: {fileID: 21300016, guid: fbf39289743ff014495845afb4dcce95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5534169265370684216}
   - component: {fileID: 5534169265370684217}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: arm_right_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300010, guid: 56d51ebba2c5ddb46818120ad3230c4d, type: 3}
+  m_Sprite: {fileID: 21300002, guid: fbf39289743ff014495845afb4dcce95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -279,7 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5534169265401770360}
   - component: {fileID: 5534169265401770361}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: leg_left_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300012, guid: 56d51ebba2c5ddb46818120ad3230c4d, type: 3}
+  m_Sprite: {fileID: 21300034, guid: fbf39289743ff014495845afb4dcce95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -359,7 +359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5534169265673159520}
   - component: {fileID: 5534169265673159521}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: arm_left_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,7 +418,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300004, guid: 56d51ebba2c5ddb46818120ad3230c4d, type: 3}
+  m_Sprite: {fileID: 21300008, guid: fbf39289743ff014495845afb4dcce95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -439,7 +439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5534169265736779155}
   - component: {fileID: 5534169265736779152}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: arm_left_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +497,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300006, guid: 56d51ebba2c5ddb46818120ad3230c4d, type: 3}
+  m_Sprite: {fileID: 21300010, guid: fbf39289743ff014495845afb4dcce95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -518,7 +518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5534169265823645075}
   - component: {fileID: 5534169265823645072}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +576,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 56d51ebba2c5ddb46818120ad3230c4d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fbf39289743ff014495845afb4dcce95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -597,7 +597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5534169265835568643}
   - component: {fileID: 5534169265835568640}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: leg_right_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300016, guid: 56d51ebba2c5ddb46818120ad3230c4d, type: 3}
+  m_Sprite: {fileID: 21300012, guid: fbf39289743ff014495845afb4dcce95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -677,7 +677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5534169266189643936}
   - component: {fileID: 5534169266189643937}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: leg_right_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -735,7 +735,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300018, guid: 56d51ebba2c5ddb46818120ad3230c4d, type: 3}
+  m_Sprite: {fileID: 21300018, guid: fbf39289743ff014495845afb4dcce95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -756,7 +756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5534169266747150442}
   - component: {fileID: 5534169266747150443}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: arm_right_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,7 +815,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300008, guid: 56d51ebba2c5ddb46818120ad3230c4d, type: 3}
+  m_Sprite: {fileID: 21300004, guid: fbf39289743ff014495845afb4dcce95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -838,7 +838,7 @@ GameObject:
   - component: {fileID: 5534169266882893247}
   - component: {fileID: 4234628803320170561}
   - component: {fileID: 6940271241905723759}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -891,13 +891,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9e937c0f9841a048a5f794cf98f2807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body_parts:
+  bodyParts:
+  - {fileID: 5534169265048629800}
+  - {fileID: 5534169265823645074}
   - {fileID: 5534169265673159523}
   - {fileID: 5534169265736779154}
   - {fileID: 5534169266747150445}
   - {fileID: 5534169265370684219}
-  - {fileID: 5534169265048629800}
-  - {fileID: 5534169265823645074}
   - {fileID: 5534169265401770363}
   - {fileID: 5534169265167627783}
   - {fileID: 5534169265835568642}
@@ -914,5 +914,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a01cbd34b1fd0643af5798664fa24b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body_part_controller: {fileID: 4234628803320170561}
-  skin: {fileID: 2800000, guid: 89b155fbc0125ee4cb4951db2fbe6a24, type: 3}
+  BodyPartsController: {fileID: 4234628803320170561}
+  skin: {fileID: 0}
