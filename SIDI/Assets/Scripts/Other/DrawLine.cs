@@ -20,8 +20,6 @@ public class DrawLine : MonoBehaviour
         lRend.SetPosition(0, new Vector3(-2, 0, 0));
         lRend.SetPosition(1, new Vector3(2, 0, 0));
 
-        Debug.Log("Draw");
-
         Destroy(newLineGen);
     }
 }
