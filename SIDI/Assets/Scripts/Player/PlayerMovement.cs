@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,12 +10,16 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private BodyPartsController bodyPartsController;
 
-    public PlayerController controller;
+    public PlayerController playerController;
     private float horizontalInput = 0f;
 
     private bool jump = false;
     private bool run = false;
     private bool crouch = false;
+
+    [SerializeField]
+    private GameObject canvas;
+    private bool inDrawing = false;
 
     private void Update()
     {
@@ -35,12 +40,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!Input.GetKey(this.keys.Get_MOVE_CAMERA()))
         {
-            controller.Move(horizontalInput * Time.fixedDeltaTime, this.jump, this.run, this.crouch);
+            playerController.Move(horizontalInput * Time.fixedDeltaTime, this.jump, this.run, this.crouch);
             reset_action();
         }
 
         if (Input.GetKeyDown(this.keys.Get_TEST()))
         {
+            if (!this.inDrawing)
+            {
+                canvas.SetActive(true);
+                this.inDrawing = true;
+            }
+            else
+            {
+                canvas.SetActive(false);
+                this.inDrawing = false;
+            }
         }
     }
 
