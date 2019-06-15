@@ -16,7 +16,7 @@ TagManager:
   - UI
   - 
   - 
-  - Ground
+  - Drawing
   - Character
   - 
   - 
@@ -43,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Paper
+    uniqueID: 1278166063
+    locked: 0
+  - name: Drawing
+    uniqueID: 3545653037
     locked: 0
