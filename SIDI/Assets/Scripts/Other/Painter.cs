@@ -20,6 +20,9 @@ public class Painter : MonoBehaviour
     //Tableau de pixel correspondant à la texture
     private Color32[] colors;
 
+    //Layer du collider  (Drawing)
+    public LayerMask drawing_layer;
+
     //////////////////////////////
     /// Fonctions de coloriage ///
     //////////////////////////////
@@ -70,12 +73,12 @@ public class Painter : MonoBehaviour
         }
     }
 
-    ////////////////////////////////
-    /// Fonctions pour la souris ///
-    ////////////////////////////////
+    ///////////////////////////////
+    /// Fonction pour la souris ///
+    ///////////////////////////////
 
     //Calcule le pixel de l'image associé à la position de la souris à l'écran.
-    private Vector2 Mouse_screen_to_image_pixel(Vector2 mouse_screen_position)
+    private Vector2 Get_pixel(Vector2 mouse_screen_position)
     {
         //Position de la souris en coordonnées locale.
         Vector2 mouse_local_position;
@@ -150,17 +153,6 @@ public class Painter : MonoBehaviour
         }
     }
 
-    //Retourne le pixel de l'image (le template) sur lequel l'utilisateur a cliqué
-    private Vector2 Get_pixel()
-    {
-        //On récupère la position de la souris à l'écran
-        Vector2 mouse_screen_position = Input.mousePosition;
-        //On en déduit le pixel de l'image correspondant
-        Vector2 pixel = Mouse_screen_to_image_pixel(mouse_screen_position);
-
-        return pixel;
-    }
-
     //////////////////////////////////
     /// Fonctions du MonoBehaviour ///
     //////////////////////////////////
@@ -178,14 +170,28 @@ public class Painter : MonoBehaviour
 
     private void Update()
     {
+        //On regarde si l'utilisateur appuie sur le bouton droit (0) de la souris
         bool mouse_held_down = Input.GetMouseButton(0);
-  
+       
+        //Si le bouton est appuyé
         if (mouse_held_down)
         {
-            Vector2 pixel = Get_pixel();
-
-            Color_Area(pixel, 10, Color.red);
-            Apply_changes();
+            //On récupère la position de la souris à l'écran
+            Vector2 mouse_screen_position = Input.mousePosition;
+            //On s'assure que l'on est bien dans le collider délimitant la zone de dessin
+            Collider2D drawing_collider = Physics2D.OverlapPoint(mouse_screen_position, this.drawing_layer);
+            
+            //Si c'est le cas
+            if (drawing_collider != null && drawing_collider.transform != null)
+            {
+                //On récupère le pixel associé à la position de la souris
+                Vector2 pixel = Get_pixel(mouse_screen_position);
+                
+                //On colorie la zone autour de ce pixel
+                Color_Area(pixel, 10, Color.red);
+                //On applique les changements
+                Apply_changes();
+            }
         }
     }
 }
