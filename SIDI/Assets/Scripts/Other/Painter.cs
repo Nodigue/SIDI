@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -17,12 +18,24 @@ public class Painter : MonoBehaviour
     //Texture du sprite (RGBA 32Bits)
     private Texture2D texture;
 
+    //Tableau de pixel correspondant à la texture de base
+    private Color32[] clean_colors;
     //Tableau de pixel correspondant à la texture
     private Color32[] colors;
+
+    //Position précedente de la souris
+    private Vector2 previous_drag_position;
+    //Est-ce que le bouton de la souris était appuyé ?
+    private bool mouse_was_previously_held_down = false;
+    //Est-ce qu'on est en train de dessiner ?
+    private bool no_drawing_on_current_drag = false;
 
     //Layer du collider  (Drawing)
     public LayerMask drawing_layer;
 
+    //Taille du pinceau
+    public int brush_size = 5;
+        
     //////////////////////////////
     /// Fonctions de coloriage ///
     //////////////////////////////
@@ -31,9 +44,9 @@ public class Painter : MonoBehaviour
     private void Apply_changes()
     {
         //On associe le nouveau tableau de pixels à la texture
-        texture.SetPixels32(colors);
+        this.texture.SetPixels32(colors);
         //On applique les changements
-        texture.Apply();
+        this.texture.Apply();
     }
 
     //Colorie un pixel aux coordoonnés "x" et "y" de couleur "color"
@@ -55,7 +68,7 @@ public class Painter : MonoBehaviour
     }
 
     //Colorie un cercle plein de centre "center", de rayon "radius" et de couleur "color"
-    private void Color_Area(Vector2 center, int radius, Color color)
+    private void Color_area(Vector2 center, int radius, Color color)
     {
         //On récupère les coodornées du pixels 'center" séparement
         int center_x = (int) center.x;
@@ -70,6 +83,22 @@ public class Painter : MonoBehaviour
                 if ((x - center_x) * (x - center_x) + (y - center_y) * (y - center_y) < radius * radius)
                     Color_pixel(x, y, color);
             }
+        }
+    }
+
+    private void Color_between(Vector2 start, Vector2 end, int size, Color color)
+    {
+        float distance = Vector2.Distance(start, end);
+        Vector2 direction = (start - end).normalized;
+
+        Vector2 cur_position = start;
+
+        float lerp_steps = 1 / distance;
+
+        for (float lerp = 0; lerp <= 1; lerp += lerp_steps)
+        {
+            cur_position = Vector2.Lerp(start, end, lerp);
+            Color_area(cur_position, size, color);
         }
     }
 
@@ -153,11 +182,60 @@ public class Painter : MonoBehaviour
         }
     }
 
+    //////////////////////////////
+    /// Fonction de sauvegarde ///
+    //////////////////////////////
+
+    private void Remove_border()
+    {
+        for (int i = 0; i < this.colors.Length; i++)
+        {
+            if (this.colors[i] == Color.black)
+            {
+                this.colors[i] = Color.clear;
+            }
+        }
+
+        Apply_changes();
+    }
+
+    //Sauvegarde le dessin
+    private void Save()
+    {
+        //On créé une nouvelle texture aux mêmes dimensions
+        Texture2D saved_texture = new Texture2D(this.texture.width, this.texture.height);
+
+        //On supprime les bords noirs du template
+        Remove_border();
+
+        //On associe le tableau de couleur à la nouvelle texture (sans les bords noirs)
+        saved_texture.SetPixels32(this.colors);
+        //On applique les changements
+        saved_texture.Apply();
+
+        //On encode l'image au format PNG
+        byte[] bytes = saved_texture.EncodeToPNG();
+        //On sauvegarde l'image au chemin de sauvegarde
+        File.WriteAllBytes(Application.dataPath + "/../testscreen.png", bytes);
+    }
+
+    //Rétablit la texture par défaut.
+    private void Reset_texture()
+    {
+        //On associe le tableau de couleur de la texture par défaut.
+        this.texture.SetPixels32(this.clean_colors);
+        //On applique les changements.
+        this.texture.Apply();
+
+        //On récupère le tableau de pixel propre
+        this.colors = this.texture.GetPixels32();
+    }
+
     //////////////////////////////////
     /// Fonctions du MonoBehaviour ///
     //////////////////////////////////
 
-    private void Awake()
+    private void Start()
     {
         //On récupère la texture sur laquelle on va dessiner
         this.image = GetComponent<Image>();
@@ -165,16 +243,20 @@ public class Painter : MonoBehaviour
         this.texture = this.sprite.texture;
 
         //On récupère le tableau de pixel
-        this.colors = texture.GetPixels32();
+        this.clean_colors = this.texture.GetPixels32();
+        this.colors = this.texture.GetPixels32();
     }
 
     private void Update()
     {
         //On regarde si l'utilisateur appuie sur le bouton droit (0) de la souris
         bool mouse_held_down = Input.GetMouseButton(0);
-       
+
+        bool save = Input.GetKeyDown(KeyCode.S);
+        bool reset = Input.GetKeyDown(KeyCode.R);
+
         //Si le bouton est appuyé
-        if (mouse_held_down)
+        if (mouse_held_down && !this.no_drawing_on_current_drag)
         {
             //On récupère la position de la souris à l'écran
             Vector2 mouse_screen_position = Input.mousePosition;
@@ -182,16 +264,52 @@ public class Painter : MonoBehaviour
             Collider2D drawing_collider = Physics2D.OverlapPoint(mouse_screen_position, this.drawing_layer);
             
             //Si c'est le cas
-            if (drawing_collider != null && drawing_collider.transform != null)
+            if (true)
             {
                 //On récupère le pixel associé à la position de la souris
                 Vector2 pixel = Get_pixel(mouse_screen_position);
-                
-                //On colorie la zone autour de ce pixel
-                Color_Area(pixel, 10, Color.red);
+
+                if (previous_drag_position == Vector2.zero)
+                {
+                   //On colorie la zone autour de ce pixel
+                   Color_area(pixel, this.brush_size, Color.red);
+                }
+                else
+                {
+                    Color_between(previous_drag_position, pixel, this.brush_size, Color.red);
+                }
                 //On applique les changements
                 Apply_changes();
+
+                previous_drag_position = pixel;
+            }
+            else
+            {
+                previous_drag_position = Vector2.zero;
+
+                if (!mouse_was_previously_held_down)
+                {
+                    no_drawing_on_current_drag = true;
+                }
             }
         }
+        else if (!mouse_held_down)
+        {
+            previous_drag_position = Vector2.zero;
+            no_drawing_on_current_drag = false;
+        }
+
+        if (save)
+        {
+            Save();
+            Reset_texture();
+        }
+
+        if (reset)
+        {
+            Reset_texture();
+        }
+
+        mouse_was_previously_held_down = mouse_held_down;
     }
 }
